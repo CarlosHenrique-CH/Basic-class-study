@@ -1,10 +1,11 @@
 #include <iostream>
 #include "Enemy.h"
+#include "Demon.h"
 
 int Enemy::health_mult = 2;
 int Enemy::total_enem{};
 
-void bl() { std::cout << "\n"; }
+static void bl() { std::cout << "\n"; }
 
 int main() {
 	Enemy doobert(19, 61, "doobert");

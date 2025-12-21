@@ -21,17 +21,19 @@ public:
     virtual ~Enemy() = default;
 
     virtual void do_action(act x) {
-        if (x == act::attack) {
-            std::cout << name << " attacks!" << std::endl;
-        }
-        else if (x == act::defend) {
-            std::cout << name << " defends!" << std::endl;
-        }
-        else if (x == act::roar) {
-            std::cout << name << " roars!" << std::endl;
-        }
-        else {
+        switch (x) {
+        case act::attack:
+            std::cout << name << " has attacked!" << std::endl;
+            break;
+        case act::defend:
+            std::cout << name << "defends!" << std::endl;
+            break;
+        case act::roar:
+            std::cout << name << " roared!" << std::endl;
+            break;
+        default:
             std::cout << name << " stands still!" << std::endl;
+            break;
         }
     }
 
@@ -49,28 +51,5 @@ public:
 
     std::string get_name() const {
         return name;
-    }
-};
-
-class Demon : public Enemy {
-private:
-    int demonic_power;
-public:
-
-    Demon(int x, int y, const std::string& z, int w)
-        : Enemy(x, y, z), demonic_power(w){}
-
-    void do_action(act x) override {
-        if (x == act::demonic_blast) {
-            std::cout << Enemy::get_name() << " used Demonic Blast!" << std::endl;
-        }
-        else {
-            Enemy::do_action(x);
-        }
-    }
-
-    void status() const override {
-        Enemy::status();
-        std::cout << "Demonic Power: " << demonic_power << std::endl;
     }
 };
