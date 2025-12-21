@@ -16,9 +16,9 @@ public:
     static int health_mult;
 
     Enemy(int x, int y, const std::string& z) 
-        : health(x), strength(y), name(z) {
-        total_enem++;
-    }
+        : health(x), strength(y), name(z) {total_enem++;}
+
+    virtual ~Enemy() = default;
 
     virtual void do_action(act x) {
         if (x == act::attack) {
@@ -41,10 +41,10 @@ public:
     }
 
     virtual void status() const {
-        std::cout << "Name: " << name << std::endl;
-        std::cout << "HP: " << health << std::endl;
-        std::cout << "SP: " << strength << std::endl;
-        std::cout << "LVL: " << level << std::endl;
+        std::cout << "Name: " << name << "\n"
+        << "HP: " << health << "\n"
+        << "SP: " << strength << "\n"
+        << "LVL: " << level << std::endl;
     }
 
     std::string get_name() const {
