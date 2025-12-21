@@ -26,7 +26,7 @@ public:
             std::cout << name << " has attacked!" << std::endl;
             break;
         case act::defend:
-            std::cout << name << "defends!" << std::endl;
+            std::cout << name << " defends!" << std::endl;
             break;
         case act::roar:
             std::cout << name << " roared!" << std::endl;
@@ -52,4 +52,5 @@ public:
     std::string get_name() const {
         return name;
     }
+
 };
