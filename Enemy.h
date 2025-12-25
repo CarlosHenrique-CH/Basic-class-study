@@ -1,13 +1,20 @@
 #pragma once
 #include <string>
+#include <iostream>
 
-class Enemy {
-private:
+struct Printable {
+    virtual ~Printable() = default;
+    virtual std::string getClassName() const = 0;
+};
+
+class Enemy : public Printable{
+protected:
     std::string name;
     int health{};
     int strength{};
     int level{};
 public:
+
     enum class act {
         attack, roar, defend, demonic_blast
     };
@@ -19,6 +26,10 @@ public:
         : health(x), strength(y), name(z) {total_enem++;}
 
     virtual ~Enemy() = default;
+
+    std::string getClassName() const override {
+        return "Enemy";
+    }
 
     virtual void do_action(act x) {
         switch (x) {
@@ -52,5 +63,8 @@ public:
     std::string get_name() const {
         return name;
     }
-
 };
+
+void Print(Printable* obj) {
+    std::cout << obj->getClassName() << std::endl;
+}
